@@ -43,7 +43,7 @@ function chart() {
         //var parseTime = d3.timeParse("%B");
 
         // Load data from miles-walked-this-month.csv
-        d3.csv("/../assets/data/data.csv").then(function(x) {
+        d3.csv("/./assets/data/data.csv").then(function(x) {
             //view data.  Data is a dictionary
             console.log(x);
 
@@ -83,12 +83,13 @@ function chart() {
         //         {return "translate("+d.smokes+","+d.obesity+")"})
 
         var toolTip = d3.tip()
-            .attr("class", "tooltip")
+            .attr("class", "d3-tip")
             .offset([80,-60])
             .html(function(x) {
-                return (`<strong>State: ${x.state}<strong><hr>
-                        <strong>Smoker Rate: ${x.smokes}<strong><hr>
-                        <strong>Obesity Rate: ${x.obesity}`)
+                 return (`<strong>State: ${x.state}<strong><hr>
+                         <strong>Smoker Rate: ${x.smokes}<strong><hr>
+                         <strong>Obesity Rate: ${x.obesity}`)
+                //return ("test")
                     });
 
         svg.call(toolTip);
@@ -105,8 +106,8 @@ function chart() {
             .attr("fill","green")
             .attr("stroke-width", "1")
             .attr("stroke", "black")
-            .on('mouseover', toolTip.show)
-            .on('mouseout', toolTip.hide);
+            .on("mouseover", toolTip.show)
+            .on("mouseout", toolTip.hide);
 
 
         // append text to circles
@@ -152,12 +153,12 @@ function chart() {
 
 
 
-        //Append tooltip div
-            // var toolTip = d3.select("body")
-            //     .append("div")
-            //     .classed("tooltip", true);
+        // //Append tooltip div
+        //     var toolTip = d3.select("body")
+        //         .append("div")
+        //         .classed("tooltip", true);
 
-        //Create "mouseover"
+        // //Create "mouseover"
         // cirGrp.on("mouseover", function(y) {
         //     toolTip.style("display", "block")
         //         .html(
@@ -169,10 +170,10 @@ function chart() {
         //         .style("top", d3.event.pageY + "px");
         // })
 
-        //Create "mouseout"
-            // .on("mouseout", function() {
-            //     toolTip.style("display", "none");
-            // });
+        // //Create "mouseout"
+        //     .on("mouseout", function() {
+        //         toolTip.style("display", "none");
+        //     });
 
         }).catch(function(error) {
             console.log(error);
