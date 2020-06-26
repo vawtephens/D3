@@ -43,7 +43,8 @@ function chart() {
         //var parseTime = d3.timeParse("%B");
 
         // Load data from miles-walked-this-month.csv
-        d3.csv("/./assets/data/data.csv").then(function(x) {
+        //d3.csv("/./assets/data/data.csv").then(function(x) {
+            d3.csv("https://vawtephens.github.io/D3/assets/data/data.csv").then(function(x) {
             //view data.  Data is a dictionary
             console.log(x);
 
