@@ -41,9 +41,6 @@ function chart() {
                     var svgWidth = window.innerWidth*.75;
                     var svgHeight = window.innerHeight*.75;
 
-        //var svgWidth = 960;
-        //var svgHeight = 500;
-
         // Define the chart's margins as an object
         var margin = {
         top: 60,
@@ -67,7 +64,6 @@ function chart() {
         .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
         // Configure a parseTime function which will return a new Date object from a string
-        //var parseTime = d3.timeParse("%B");
 
         // Load data from miles-walked-this-month.csv
         //d3.csv("/./assets/data/data.csv").then(function(x) {
@@ -86,6 +82,7 @@ function chart() {
         }); 
         console.log(x);
 
+        //create case fuction to select correct data set
         function dat(group) {
             switch (group) {
             case "Obesity Rates (%)":
@@ -127,14 +124,7 @@ function chart() {
         chartGroup.append("g")
             .attr("transform", `translate(0, ${chartHeight})`)
             .call(xAxis);
-
-        //create blocks for each circle
-        // var elemEnter = chartGroup
-        //     .enter()
-        //     .append("g")
-        //     .attr("transform", function(d)
-        //         {return "translate("+d.smokes+","+d.obesity+")"})
-
+        //define tool tips
         var toolTip = d3.tip()
             .attr("class", "d3-tip")
             .offset([80,-60])
@@ -162,7 +152,7 @@ function chart() {
             .attr("opacity", ".5")
             .on("mouseover", toolTip.show)
             .on("mouseout", toolTip.hide);
-
+        /// append text to circles
         var te = chartGroup
             .append('g')
             .selectAll('circle')
